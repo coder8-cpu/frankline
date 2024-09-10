@@ -18,17 +18,17 @@ from django.urls import path
 from web.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-i = index()
-c = contact()
-d = dealership()
-p = render_popup()
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',i.show_index),
-    path('contact/',c.show_contact),
-    path('popup/',p.show_popup),
-    path('contact/post-contact/',c.post_data),
-    path('dealership/',d.show_dealership),
-    path('dealership/post-dealership/',d.post_data),
+    path('api/ka/signup/',AdminLogin.as_view()),
+    path('api/ka/login/',Login.as_view()),
+    path('api/ka/course/',Course.as_view()),
+    path('api/ka/batch/',Batch.as_view()),
+    path('api/ka/student/',Student.as_view()),
+    path('api/ka/assets/',Assets.as_view()),
+  
+
+  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
